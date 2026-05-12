@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Modernization & Enablement | Index master</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root { --eng-line: rgba(123,202,255,0.18); --eng-cyan:#3fc7ff; --eng-text:#e8f3ff; --eng-magenta:#e0338a; --eng-magenta-soft:rgba(224,51,138,0.12); }
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(63,199,255,0.08), transparent 26%),
+    radial-gradient(circle at 85% 15%, rgba(224,51,138,0.08), transparent 24%),
+    linear-gradient(180deg, #06111f 0%, #071523 42%, #08111b 100%);
+  color: var(--eng-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.glass-card { background: linear-gradient(180deg, rgba(15,39,64,0.88), rgba(10,27,44,0.84)); border: 1px solid var(--eng-line); box-shadow: 0 16px 40px rgba(0,0,0,0.22); backdrop-filter: blur(10px); }
+.accent-title { color: var(--eng-cyan); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; }
+.accent-magenta { color: var(--eng-magenta); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; }
+.sidebar-link { transition: all 0.2s ease; }
+.sidebar-link:hover { background: rgba(63,199,255,0.08); color: white; }
+.sidebar-link.active { background: linear-gradient(90deg, rgba(63,199,255,0.18), rgba(79,124,255,0.08)); border: 1px solid rgba(63,199,255,0.24); color: white; }
+.metric-highlight { background: linear-gradient(135deg, rgba(63,199,255,0.16), rgba(79,124,255,0.08)); border: 1px solid rgba(63,199,255,0.2); }
+.metric-magenta { background: linear-gradient(135deg, rgba(224,51,138,0.14), rgba(180,30,100,0.06)); border: 1px solid rgba(224,51,138,0.22); }
+.panel-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); transition: all 0.2s ease; }
+.panel-item:hover { border-color: rgba(63,199,255,0.35); background: rgba(63,199,255,0.06); }
+.panel-item-magenta:hover { border-color: rgba(224,51,138,0.4); background: rgba(224,51,138,0.06); }
+.pill { border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.04); border-radius: 999px; padding: 6px 12px; font-size: 12px; color: #c8d8e8; }
+.pill-magenta { border: 1px solid rgba(224,51,138,0.3); background: rgba(224,51,138,0.08); border-radius: 999px; padding: 6px 14px; font-size: 12px; color: #f4a0cb; }
+.phase-badge { background: linear-gradient(135deg, rgba(224,51,138,0.18), rgba(180,30,100,0.08)); border: 1px solid rgba(224,51,138,0.25); border-radius: 8px; padding: 4px 10px; font-size: 11px; color: #f4a0cb; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-section { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(63,199,255,0.5); padding: 8px 16px 4px; }
+</style>
+</head>
+<body class="min-h-screen">
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="hidden w-80 border-r border-white/10 bg-black/10 px-5 py-6 lg:block flex-shrink-0">
+    <div class="mb-8">
+      <div class="text-xs tracking-[0.25em] text-cyan-300/80 uppercase">ENG Brasil</div>
+      <div class="mt-2 text-2xl font-semibold leading-tight">AI Modernization<br><span style="color:var(--eng-magenta);">&</span> AI Enablement</div>
+      <div class="mt-2 text-sm text-slate-300">Demo · Arquitetura · Guia comercial</div>
+    </div>
+
+    <div class="sidebar-section">Início</div>
+    <nav class="space-y-1 mb-4">
+      <a href="aimod_master_index.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm active">Index master</a>
+    </nav>
+
+    <div class="sidebar-section">A oferta</div>
+    <nav class="space-y-1 mb-4">
+      <a href="aimod_o_que_e.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">O que é a oferta</a>
+      <a href="aimod_dores.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Dores enfrentadas</a>
+      <a href="aimod_esteira.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Esteira de Entrega de Valor</a>
+      <a href="aimod_llms.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">LLMs & AI na entrega</a>
+    </nav>
+
+    <div class="sidebar-section">Posicionamento</div>
+    <nav class="space-y-1 mb-4">
+      <a href="aimod_arquitetura.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Arquitetura da solução</a>
+      <a href="aimod_guia_comercial.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Guia comercial</a>
+      <a href="aimod_battle_card.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Battle Card</a>
+    </nav>
+
+    <div class="mt-8 rounded-3xl border border-cyan-400/15 bg-cyan-400/5 p-4 text-sm text-slate-300">
+      <div class="font-medium text-white">Objetivo</div>
+      <p class="mt-2 leading-6">Transformar sistemas legados em ativos digitais modernos, ágeis e escaláveis, aplicando IA como orquestrador, acelerador, revisor e testador em todo o ciclo de modernização.</p>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 px-5 py-5 md:px-8 lg:px-10 min-w-0">
+
+    <!-- Header -->
+    <div class="mb-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 md:flex-row md:items-center md:justify-between">
+      <div>
+        <div class="accent-title">AI Modernization & AI Enablement</div>
+        <h1 class="mt-1 text-2xl font-semibold md:text-4xl">Index master da oferta</h1>
+        <p class="mt-2 max-w-4xl text-sm leading-6 text-slate-300 md:text-base">Ponto central para navegar pela definição da oferta, entender a esteira de entrega de valor, os LLMs que a sustentam e apoiar o posicionamento comercial.</p>
+      </div>
+      <div class="pill-magenta flex-shrink-0">Versão consolidada</div>
+    </div>
+
+    <!-- Metrics -->
+    <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div class="metric-highlight rounded-2xl p-4"><div class="text-3xl font-semibold">2</div><div class="mt-1 text-sm text-slate-300">Frentes da oferta</div></div>
+      <div class="metric-magenta rounded-2xl p-4"><div class="text-3xl font-semibold">5</div><div class="mt-1 text-sm text-slate-300">Fases da esteira</div></div>
+      <div class="metric-highlight rounded-2xl p-4"><div class="text-3xl font-semibold">20+</div><div class="mt-1 text-sm text-slate-300">Dores mapeadas</div></div>
+      <div class="metric-magenta rounded-2xl p-4"><div class="text-3xl font-semibold">3</div><div class="mt-1 text-sm text-slate-300">Modos de exploração</div></div>
+    </section>
+
+    <!-- Main grid -->
+    <section class="mt-6 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+
+      <!-- Rotas principais -->
+      <div class="glass-card rounded-[28px] p-7">
+        <div class="accent-title">Explorar o pacote</div>
+        <h2 class="mt-2 text-2xl font-semibold">Rotas principais</h2>
+        <div class="mt-5 grid gap-4 md:grid-cols-2">
+
+          <a href="aimod_o_que_e.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-lg font-medium text-white">O que é a oferta</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">Entender as definições de AI Modernization e AI Enablement com exemplos práticos e diferenças entre as frentes.</div>
+          </a>
+
+          <a href="aimod_dores.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-lg font-medium text-white">Dores enfrentadas</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">Mapa completo das dores de clientes com sistemas legados que justificam e abrem espaço para a oferta.</div>
+          </a>
+
+          <a href="aimod_esteira.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-lg font-medium text-white">Esteira de Entrega de Valor</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">As 5 fases do ciclo — Discovery, Architecture, AI Development, Migration e Value & Optimization.</div>
+          </a>
+
+          <a href="aimod_llms.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-lg font-medium text-white">LLMs & AI na entrega</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">Quais ferramentas e plataformas de IA suportam cada fase da esteira de modernização.</div>
+          </a>
+
+          <a href="aimod_arquitetura.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-lg font-medium text-white">Arquitetura da solução</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">Visão técnica da jornada de modernização com camadas, fluxos e integrações envolvidas.</div>
+          </a>
+
+          <a href="aimod_guia_comercial.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-lg font-medium text-white">Guia comercial</div>
+            <div class="mt-2 text-sm leading-6 text-slate-300">Apoiar venda, qualificação, posicionamento, objeções e narrativa comercial da oferta.</div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Como navegar -->
+      <div class="glass-card rounded-[28px] p-7">
+        <div class="accent-title">Sequência sugerida</div>
+        <h2 class="mt-2 text-2xl font-semibold">Como navegar</h2>
+        <div class="mt-5 space-y-4 text-sm text-slate-300">
+          <div class="panel-item rounded-2xl p-4">
+            <div class="font-medium text-white">1. Comece pela definição</div>
+            <div class="mt-2">Útil para alinhar o que é AI Modernization vs AI Enablement antes de falar com o cliente.</div>
+          </div>
+          <div class="panel-item rounded-2xl p-4">
+            <div class="font-medium text-white">2. Use as dores como espelho</div>
+            <div class="mt-2">Ajuda a qualificar a oportunidade identificando quais dores o cliente enfrenta.</div>
+          </div>
+          <div class="panel-item rounded-2xl p-4">
+            <div class="font-medium text-white">3. Mostre a esteira</div>
+            <div class="mt-2">Torna concreto como a ENG entrega — fases, artefatos e o que cada etapa produz.</div>
+          </div>
+          <div class="panel-item rounded-2xl p-4">
+            <div class="font-medium text-white">4. Feche com o Guia comercial</div>
+            <div class="mt-2">Transforma a conversa técnica em abordagem comercial com pitch, objeções e próximos passos.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 3 colunas de resumo -->
+    <section class="mt-6 grid gap-6 xl:grid-cols-3">
+
+      <!-- Frentes da oferta -->
+      <div class="glass-card rounded-[28px] p-7">
+        <div class="accent-magenta">Frentes</div>
+        <h3 class="mt-2 text-xl font-semibold">A oferta em 2 frentes</h3>
+        <div class="mt-5 space-y-3 text-sm text-slate-300">
+          <div class="panel-item rounded-2xl p-4">
+            <div class="font-medium text-white">AI Modernization</div>
+            <div class="mt-1 text-xs leading-5">Aplica IA no ciclo de modernização de sistemas legados — refatoração, testes, documentação e conversão.</div>
+          </div>
+          <div class="panel-item rounded-2xl p-4">
+            <div class="font-medium text-white">AI Enablement</div>
+            <div class="mt-1 text-xs leading-5">Prepara a organização para operar em ecossistema digital moderno com IA como orquestradora de plataformas e integrações.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Esteira resumida -->
+      <div class="glass-card rounded-[28px] p-7">
+        <div class="accent-magenta">Esteira</div>
+        <h3 class="mt-2 text-xl font-semibold">5 fases de entrega</h3>
+        <div class="mt-5 space-y-2 text-sm">
+          <a href="aimod_esteira.html" class="panel-item rounded-2xl p-3 flex items-center gap-3 block">
+            <span class="phase-badge">01</span>
+            <span class="text-slate-200">Discovery & Strategy</span>
+          </a>
+          <a href="aimod_esteira.html" class="panel-item rounded-2xl p-3 flex items-center gap-3 block">
+            <span class="phase-badge">02</span>
+            <span class="text-slate-200">Architecture & Design</span>
+          </a>
+          <a href="aimod_esteira.html" class="panel-item rounded-2xl p-3 flex items-center gap-3 block">
+            <span class="phase-badge">03</span>
+            <span class="text-slate-200">AI Development</span>
+          </a>
+          <a href="aimod_esteira.html" class="panel-item rounded-2xl p-3 flex items-center gap-3 block">
+            <span class="phase-badge">04</span>
+            <span class="text-slate-200">Migration & Production</span>
+          </a>
+          <a href="aimod_esteira.html" class="panel-item rounded-2xl p-3 flex items-center gap-3 block">
+            <span class="phase-badge">05</span>
+            <span class="text-slate-200">Value & Optimization</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Comercial -->
+      <div class="glass-card rounded-[28px] p-7">
+        <div class="accent-magenta">Comercial</div>
+        <h3 class="mt-2 text-xl font-semibold">O que apoia</h3>
+        <div class="mt-5 space-y-3 text-sm text-slate-300">
+          <div class="panel-item rounded-2xl p-3">Mapa de dores e qualificação de oportunidade</div>
+          <div class="panel-item rounded-2xl p-3">Tese de valor e diferenciais da oferta</div>
+          <div class="panel-item rounded-2xl p-3">Sinais de oportunidade e perguntas de qualificação</div>
+          <div class="panel-item rounded-2xl p-3">Objeções comuns e respostas sugeridas</div>
+          <div class="panel-item rounded-2xl p-3">Pitch de 30 segundos e 1 minuto</div>
+          <a href="aimod_battle_card.html" class="panel-item rounded-2xl p-3 block text-cyan-300 hover:text-white">→ Battle Card da oferta</a>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+</body>
+</html>
