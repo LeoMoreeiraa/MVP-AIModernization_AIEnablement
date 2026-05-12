@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Modernization & Enablement | Esteira de Entrega de Valor</title>
+ 
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root {
+  --eng-line: rgba(123,202,255,0.18);
+  --eng-cyan: #3fc7ff;
+  --eng-text: #e8f3ff;
+  --eng-magenta: #e0338a;
+  --eng-magenta-soft: rgba(224,51,138,0.12);
+}
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(63,199,255,0.08), transparent 26%),
+    radial-gradient(circle at 85% 15%, rgba(224,51,138,0.08), transparent 24%),
+    linear-gradient(180deg, #06111f 0%, #071523 42%, #08111b 100%);
+  color: var(--eng-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.glass-card {
+  background: linear-gradient(180deg, rgba(15,39,64,0.88), rgba(10,27,44,0.84));
+  border: 1px solid var(--eng-line);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+  backdrop-filter: blur(10px);
+}
+.accent-title { color: var(--eng-cyan); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; }
+.accent-magenta { color: var(--eng-magenta); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; }
+.sidebar-link { transition: all 0.2s ease; }
+.sidebar-link:hover { background: rgba(63,199,255,0.08); color: white; }
+.sidebar-link.active {
+  background: linear-gradient(90deg, rgba(63,199,255,0.18), rgba(79,124,255,0.08));
+  border: 1px solid rgba(63,199,255,0.24);
+  color: white;
+}
+.metric-highlight {
+  background: linear-gradient(135deg, rgba(63,199,255,0.16), rgba(79,124,255,0.08));
+  border: 1px solid rgba(63,199,255,0.2);
+}
+.metric-magenta {
+  background: linear-gradient(135deg, rgba(224,51,138,0.14), rgba(180,30,100,0.06));
+  border: 1px solid rgba(224,51,138,0.22);
+}
+.panel-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s ease;
+}
+.panel-item:hover { border-color: rgba(63,199,255,0.35); background: rgba(63,199,255,0.06); }
+.panel-item-magenta {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s ease;
+}
+.panel-item-magenta:hover { border-color: rgba(224,51,138,0.4); background: rgba(224,51,138,0.06); }
+.pill { border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.04); border-radius: 999px; padding: 6px 12px; font-size: 12px; color: #c8d8e8; }
+.pill-magenta { border: 1px solid rgba(224,51,138,0.3); background: rgba(224,51,138,0.08); border-radius: 999px; padding: 6px 14px; font-size: 12px; color: #f4a0cb; }
+.sidebar-section { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(63,199,255,0.5); padding: 8px 16px 4px; }
+ 
+/* Phase cards */
+.phase-card {
+  border-radius: 20px;
+  padding: 22px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.phase-card:hover { transform: translateY(-2px); }
+.phase-card.active { transform: translateY(-2px); }
+ 
+.phase-01 { background: linear-gradient(145deg, rgba(63,199,255,0.12), rgba(79,124,255,0.05)); border: 1px solid rgba(63,199,255,0.25); }
+.phase-01.active { border-color: rgba(63,199,255,0.55); box-shadow: 0 0 24px rgba(63,199,255,0.12); }
+.phase-02 { background: linear-gradient(145deg, rgba(124,99,255,0.12), rgba(79,124,255,0.05)); border: 1px solid rgba(124,99,255,0.25); }
+.phase-02.active { border-color: rgba(124,99,255,0.55); box-shadow: 0 0 24px rgba(124,99,255,0.12); }
+.phase-03 { background: linear-gradient(145deg, rgba(224,51,138,0.12), rgba(180,30,100,0.05)); border: 1px solid rgba(224,51,138,0.25); }
+.phase-03.active { border-color: rgba(224,51,138,0.55); box-shadow: 0 0 24px rgba(224,51,138,0.12); }
+.phase-04 { background: linear-gradient(145deg, rgba(250,140,40,0.10), rgba(220,100,20,0.04)); border: 1px solid rgba(250,140,40,0.22); }
+.phase-04.active { border-color: rgba(250,140,40,0.5); box-shadow: 0 0 24px rgba(250,140,40,0.10); }
+.phase-05 { background: linear-gradient(145deg, rgba(52,211,153,0.10), rgba(16,185,129,0.04)); border: 1px solid rgba(52,211,153,0.22); }
+.phase-05.active { border-color: rgba(52,211,153,0.5); box-shadow: 0 0 24px rgba(52,211,153,0.10); }
+ 
+.phase-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; border-radius: 8px;
+  padding: 3px 10px; display: inline-block;
+}
+.num-01 { background: rgba(63,199,255,0.15); color: #3fc7ff; border: 1px solid rgba(63,199,255,0.3); }
+.num-02 { background: rgba(124,99,255,0.15); color: #b09bff; border: 1px solid rgba(124,99,255,0.3); }
+.num-03 { background: rgba(224,51,138,0.15); color: #f4a0cb; border: 1px solid rgba(224,51,138,0.3); }
+.num-04 { background: rgba(250,140,40,0.15); color: #fbbf78; border: 1px solid rgba(250,140,40,0.3); }
+.num-05 { background: rgba(52,211,153,0.15); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.3); }
+ 
+.arrow-connector {
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.2); font-size: 18px; flex-shrink: 0;
+  padding: 0 2px;
+}
+ 
+/* Detail panel */
+.detail-badge {
+  display: inline-flex; align-items: center; gap-6px;
+  border-radius: 999px; padding: 4px 12px; font-size: 11px; font-weight: 600;
+}
+.detail-01 { background: rgba(63,199,255,0.12); color: #3fc7ff; border: 1px solid rgba(63,199,255,0.25); }
+.detail-02 { background: rgba(124,99,255,0.12); color: #b09bff; border: 1px solid rgba(124,99,255,0.25); }
+.detail-03 { background: rgba(224,51,138,0.12); color: #f4a0cb; border: 1px solid rgba(224,51,138,0.25); }
+.detail-04 { background: rgba(250,140,40,0.12); color: #fbbf78; border: 1px solid rgba(250,140,40,0.25); }
+.detail-05 { background: rgba(52,211,153,0.12); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.25); }
+ 
+.artifact-tag {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 8px; padding: 3px 10px; font-size: 11px; color: #a0bcd0;
+  display: inline-block;
+}
+.deliverable-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 12px 14px;
+  font-size: 13px; color: #c8d8e8;
+  transition: all 0.2s;
+}
+.deliverable-item:hover { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.dot-01 { background: #3fc7ff; }
+.dot-02 { background: #b09bff; }
+.dot-03 { background: #e0338a; }
+.dot-04 { background: #fa8c28; }
+.dot-05 { background: #34d399; }
+ 
+/* LLM tool chips */
+.llm-chip {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 6px 12px; font-size: 12px; color: #c8d8e8;
+  display: flex; align-items: center; gap: 6px;
+}
+ 
+/* Progress bar */
+.bar-track { height: 6px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; }
+ 
+/* Value delivery arrow */
+.value-arrow {
+  background: linear-gradient(90deg, rgba(224,51,138,0.15), rgba(52,211,153,0.15));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 16px 24px;
+  text-align: center;
+}
+</style>
+</head>
+<body class="min-h-screen">
+<div class="flex min-h-screen">
+ 
+  <!-- Sidebar -->
+  <aside class="hidden w-80 border-r border-white/10 bg-black/10 px-5 py-6 lg:block flex-shrink-0">
+    <div class="mb-8">
+      <div class="text-xs tracking-[0.25em] text-cyan-300/80 uppercase">ENG Brasil</div>
+      <div class="mt-2 text-2xl font-semibold leading-tight">AI Modernization<br><span style="color:var(--eng-magenta);">&</span> AI Enablement</div>
+      <div class="mt-2 text-sm text-slate-300">Demo · Arquitetura · Guia comercial</div>
+    </div>
+ 
+    <div class="sidebar-section">Início</div>
+    <nav class="space-y-1 mb-4">
+      <a href="aimod_master_index.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Index master</a>
+    </nav>
+ 
+    <div class="sidebar-section">A oferta</div>
+    <nav class="space-y-1 mb-4">
+      <a href="aimod_o_que_e.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">O que é a oferta</a>
+      <a href="aimod_dores.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Dores enfrentadas</a>
+      <a href="aimod_esteira.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm active">Esteira de Entrega de Valor</a>
+      <a href="aimod_llms.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">LLMs & AI na entrega</a>
+    </nav>
+ 
+    <div class="sidebar-section">Posicionamento</div>
+    <nav class="space-y-1 mb-4">
+      <a href="aimod_arquitetura.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Arquitetura da solução</a>
+      <a href="aimod_guia_comercial.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Guia comercial</a>
+      <a href="aimod_battle_card.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Battle Card</a>
+    </nav>
+ 
+    <div class="mt-8 rounded-3xl border border-cyan-400/15 bg-cyan-400/5 p-4 text-sm text-slate-300">
+      <div class="font-medium text-white">Objetivo</div>
+      <p class="mt-2 leading-6">Transformar sistemas legados em ativos digitais modernos, ágeis e escaláveis, aplicando IA como orquestrador, acelerador, revisor e testador em todo o ciclo de modernização.</p>
+    </div>
+  </aside>
+ 
+  <!-- Main -->
+  <main class="flex-1 px-5 py-5 md:px-8 lg:px-10 min-w-0">
+ 
+    <!-- Header -->
+    <div class="mb-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 md:flex-row md:items-center md:justify-between">
+      <div>
+        <div class="accent-title">Esteira de Entrega</div>
+        <h1 class="mt-1 text-2xl font-semibold md:text-4xl">Esteira de Entrega de Valor</h1>
+        <p class="mt-2 max-w-4xl text-sm leading-6 text-slate-300 md:text-base">As 5 fases do ciclo de modernização — do diagnóstico ao legado em produção digital — com artefatos, entregas e LLMs que suportam cada etapa.</p>
+      </div>
+      <div class="pill-magenta flex-shrink-0">5 fases · Ciclo completo</div>
+    </div>
+ 
+    <!-- Metrics -->
+    <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+      <div class="metric-highlight rounded-2xl p-4">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Fase 1</div>
+        <div class="text-base font-semibold text-white">Discovery</div>
+        <div class="mt-1 text-xs text-slate-400">Assessment + Roadmap</div>
+      </div>
+      <div class="metric-highlight rounded-2xl p-4">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Fase 2</div>
+        <div class="text-base font-semibold text-white">Architecture</div>
+        <div class="mt-1 text-xs text-slate-400">Design + Governança</div>
+      </div>
+      <div class="metric-magenta rounded-2xl p-4">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Fase 3</div>
+        <div class="text-base font-semibold text-white">AI Development</div>
+        <div class="mt-1 text-xs text-slate-400">Refatoração + Testes</div>
+      </div>
+      <div class="metric-highlight rounded-2xl p-4">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Fase 4</div>
+        <div class="text-base font-semibold text-white">Migration</div>
+        <div class="mt-1 text-xs text-slate-400">Produção + Pipelines</div>
+      </div>
+      <div class="metric-highlight rounded-2xl p-4">
+        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Fase 5</div>
+        <div class="text-base font-semibold text-white">Value & Optim.</div>
+        <div class="mt-1 text-xs text-slate-400">Monitoring + CoE</div>
+      </div>
+    </section>
+ 
+    <!-- Phase selector row -->
+    <section class="mt-6">
+      <div class="glass-card rounded-[28px] p-6">
+        <div class="accent-title mb-4">Selecione uma fase para ver o detalhamento</div>
+        <div class="flex items-stretch gap-2 overflow-x-auto pb-1" id="phaseRow">
+ 
+          <div class="phase-card phase-01 active flex-1 min-w-[140px]" onclick="selectPhase(1)" id="phase-tab-1">
+            <div class="phase-num num-01 mb-3">01</div>
+            <div class="text-sm font-semibold text-white leading-tight">Discovery<br>& Strategy</div>
+            <div class="mt-2 text-xs text-slate-400 leading-5">Assessment de legados, business case, ROI e roadmap</div>
+            <div class="bar-track mt-4"><div class="bar-fill bg-cyan-400/70" style="width:100%"></div></div>
+          </div>
+ 
+          <div class="arrow-connector">›</div>
+ 
+          <div class="phase-card phase-02 flex-1 min-w-[140px]" onclick="selectPhase(2)" id="phase-tab-2">
+            <div class="phase-num num-02 mb-3">02</div>
+            <div class="text-sm font-semibold text-white leading-tight">Architecture<br>& Design</div>
+            <div class="mt-2 text-xs text-slate-400 leading-5">Arquitetura-alvo, integrações e estratégia de desacoplamento</div>
+            <div class="bar-track mt-4"><div class="bar-fill" style="width:100%; background: linear-gradient(90deg, rgba(124,99,255,0.6), rgba(79,124,255,0.8));"></div></div>
+          </div>
+ 
+          <div class="arrow-connector">›</div>
+ 
+          <div class="phase-card phase-03 flex-1 min-w-[140px]" onclick="selectPhase(3)" id="phase-tab-3">
+            <div class="phase-num num-03 mb-3">03</div>
+            <div class="text-sm font-semibold text-white leading-tight">AI<br>Development</div>
+            <div class="mt-2 text-xs text-slate-400 leading-5">Refatoração assistida por IA, testes e documentação viva</div>
+            <div class="bar-track mt-4"><div class="bar-fill" style="width:100%; background: linear-gradient(90deg, rgba(224,51,138,0.6), rgba(180,30,100,0.8));"></div></div>
+          </div>
+ 
+          <div class="arrow-connector">›</div>
+ 
+          <div class="phase-card phase-04 flex-1 min-w-[140px]" onclick="selectPhase(4)" id="phase-tab-4">
+            <div class="phase-num num-04 mb-3">04</div>
+            <div class="text-sm font-semibold text-white leading-tight">Migration<br>& Production</div>
+            <div class="mt-2 text-xs text-slate-400 leading-5">Migração híbrida/multicloud e pipelines automatizados</div>
+            <div class="bar-track mt-4"><div class="bar-fill" style="width:100%; background: linear-gradient(90deg, rgba(250,140,40,0.6), rgba(220,100,20,0.8));"></div></div>
+          </div>
+ 
+          <div class="arrow-connector">›</div>
+ 
+          <div class="phase-card phase-05 flex-1 min-w-[140px]" onclick="selectPhase(5)" id="phase-tab-5">
+            <div class="phase-num num-05 mb-3">05</div>
+            <div class="text-sm font-semibold text-white leading-tight">Value<br>& Optimization</div>
+            <div class="mt-2 text-xs text-slate-400 leading-5">Monitoramento inteligente, eficiência e CoE de Modernização</div>
+            <div class="bar-track mt-4"><div class="bar-fill" style="width:100%; background: linear-gradient(90deg, rgba(52,211,153,0.6), rgba(16,185,129,0.8));"></div></div>
+          </div>
+ 
+          <div class="arrow-connector flex-shrink-0 px-3">
+            <div class="text-center">
+              <div class="text-xs font-bold" style="color:var(--eng-magenta);">▶</div>
+              <div class="text-xs text-slate-400 mt-1">Valor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Detail panel -->
+    <section class="mt-6 grid gap-6 xl:grid-cols-[1.3fr_0.7fr]" id="detailSection">
+ 
+      <!-- Left: deliverables -->
+      <div class="glass-card rounded-[28px] p-7" id="detailLeft">
+        <!-- populated by JS -->
+      </div>
+ 
+      <!-- Right: LLMs + artefatos -->
+      <div class="space-y-5">
+        <div class="glass-card rounded-[28px] p-6" id="detailTools">
+          <!-- populated by JS -->
+        </div>
+        <div class="glass-card rounded-[28px] p-6" id="detailArtifacts">
+          <!-- populated by JS -->
+        </div>
+      </div>
+ 
+    </section>
+ 
+    <!-- Value delivery bar -->
+    <section class="mt-6">
+      <div class="value-arrow">
+        <div class="flex items-center justify-center gap-4 flex-wrap">
+          <span class="text-xs text-slate-400 uppercase tracking-wider">Resultado final</span>
+          <span class="text-sm font-semibold text-white">Discovery</span>
+          <span class="text-slate-600">→</span>
+          <span class="text-sm font-semibold text-white">Architecture</span>
+          <span class="text-slate-600">→</span>
+          <span class="text-sm font-semibold text-white">AI Development</span>
+          <span class="text-slate-600">→</span>
+          <span class="text-sm font-semibold text-white">Migration</span>
+          <span class="text-slate-600">→</span>
+          <span class="text-sm font-semibold text-white">Value & Optimization</span>
+          <span class="text-slate-600">→</span>
+          <span class="text-sm font-bold" style="color:var(--eng-magenta);">ENTREGA DE VALOR</span>
+        </div>
+        <p class="mt-3 text-xs text-slate-400 text-center max-w-3xl mx-auto">Legado vira ativo digital moderno, ágil e escalável — com IA como orquestrador, acelerador, revisor e testador em todo o ciclo.</p>
+      </div>
+    </section>
+ 
+    <!-- Navigation -->
+    <section class="mt-6">
+      <div class="glass-card rounded-[28px] p-6">
+        <div class="accent-title mb-4">Continuar explorando</div>
+        <div class="grid gap-4 md:grid-cols-3">
+          <a href="aimod_llms.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-base font-medium text-white">LLMs & AI na entrega</div>
+            <div class="mt-2 text-xs leading-5 text-slate-300">Ferramentas de IA que suportam cada fase — GitLab, Copilot, Cursor, ENG Test e mais.</div>
+          </a>
+          <a href="aimod_dores.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-base font-medium text-white">Dores enfrentadas</div>
+            <div class="mt-2 text-xs leading-5 text-slate-300">20+ dores mapeadas que a esteira foi desenhada para resolver.</div>
+          </a>
+          <a href="aimod_guia_comercial.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+            <div class="text-base font-medium text-white">Guia comercial</div>
+            <div class="mt-2 text-xs leading-5 text-slate-300">Pitch, qualificação e objeções para transformar a conversa técnica em abordagem comercial.</div>
+          </a>
+        </div>
+      </div>
+    </section>
+ 
+  </main>
+</div>
+ 
+<script>
+const phases = {
+  1: {
+    badge: 'detail-01',
+    num: '01',
+    name: 'Discovery & Strategy',
+    subtitle: 'Diagnóstico, business case e roadmap de modernização',
+    description: 'Ponto de partida da jornada. Aqui mapeamos os sistemas legados existentes, avaliamos o grau de obsolescência, construímos o business case com ROI e definimos o roadmap estratégico de modernização — priorizando por valor de negócio e risco técnico.',
+    deliverables: [
+      { dot: 'dot-01', title: 'Assessment de Legados + Mapa de Obsolescência', desc: 'Inventário técnico dos sistemas, identificação de dívida técnica, dependências ocultas e riscos.' },
+      { dot: 'dot-01', title: 'Business Case & ROI', desc: 'Estimativa de valor gerado, custos evitados e retorno esperado por frente de modernização.' },
+      { dot: 'dot-01', title: 'Roadmap de Modernização', desc: 'Sequenciamento das iniciativas priorizadas por criticidade, valor e capacidade de execução.' },
+    ],
+    tools: ['GitLab Duo', 'GitHub Copilot', 'Confluence AI'],
+    artifacts: ['Relatório de Assessment', 'Mapa de Obsolescência', 'Business Case', 'Roadmap Estratégico'],
+    color: '#3fc7ff',
+    bgClass: 'phase-01'
+  },
+  2: {
+    badge: 'detail-02',
+    num: '02',
+    name: 'Architecture & Design',
+    subtitle: 'Definição da arquitetura-alvo, integrações e governança',
+    description: 'Com o diagnóstico em mãos, desenhamos a arquitetura-alvo moderna — Cloud Native, Event Driven, orientada a APIs — e definimos a estratégia de desacoplamento dos sistemas, além das métricas de governança técnica e financeira com FinOps.',
+    deliverables: [
+      { dot: 'dot-02', title: 'Definição de Arquitetura-Alvo', desc: 'Blueprints Cloud Native, Event Driven e API-first para substituição progressiva do legado.' },
+      { dot: 'dot-02', title: 'Estratégia de Desacoplamento', desc: 'Padrão de strangler fig, APIs de fachada e divisão de domínios para migração incremental.' },
+      { dot: 'dot-02', title: 'Definição de Governança + FinOps', desc: 'Métricas de qualidade, SLOs, modelo de custo e controles de observabilidade para toda a jornada.' },
+    ],
+    tools: ['GitLab Duo', 'GitHub Copilot', 'Draw.io AI', 'Confluece AI'],
+    artifacts: ['Blueprint de Arquitetura', 'ADRs (Architecture Decision Records)', 'Plano de Desacoplamento', 'Modelo FinOps'],
+    color: '#b09bff',
+    bgClass: 'phase-02'
+  },
+  3: {
+    badge: 'detail-03',
+    num: '03',
+    name: 'AI Development',
+    subtitle: 'Refatoração assistida por IA, testes inteligentes e documentação viva',
+    description: 'O coração da entrega. Aqui a IA atua como acelerador, revisor e testador — gerando código refatorado, revisando qualidade, criando suítes de testes e documentação técnica de forma automatizada. É onde o legado começa a se transformar de fato.',
+    deliverables: [
+      { dot: 'dot-03', title: 'Refatoração Assistida por IA (IA Coding)', desc: 'Conversão de código legado para linguagens e frameworks modernos com apoio de LLMs e revisão humana.' },
+      { dot: 'dot-03', title: 'Code Review Inteligente', desc: 'Análise automatizada de qualidade, padrões, segurança e aderência à arquitetura definida.' },
+      { dot: 'dot-03', title: 'Testes Automatizados (IA QA)', desc: 'Geração e validação de testes unitários, de regressão e de performance por agentes de IA.' },
+      { dot: 'dot-03', title: 'Documentação Viva (gerada por IA)', desc: 'Documentação técnica e user stories criadas automaticamente a partir do código e dos fluxos.' },
+      { dot: 'dot-03', title: 'Conversão de Linguagem e Frameworks', desc: 'Migração de COBOL, PL/SQL, VB, Java legado para stacks modernas com rastreabilidade total.' },
+    ],
+    tools: ['GitLab Duo', 'Cursor (AI Code Editor)', 'GitHub Copilot', 'ENG Test', 'SonarQube AI'],
+    artifacts: ['Código Refatorado', 'Relatório de Code Review', 'Suíte de Testes', 'Documentação Técnica', 'User Stories Geradas'],
+    color: '#e0338a',
+    bgClass: 'phase-03'
+  },
+  4: {
+    badge: 'detail-04',
+    num: '04',
+    name: 'Migration & Production',
+    subtitle: 'Migração híbrida/multicloud, pipelines automatizados e integração contínua',
+    description: 'Fase de colocação em produção do sistema modernizado. Realizamos a migração dos workloads de forma modular e controlada — cloud, multicloud ou híbrida — com pipelines automatizados e governança do ciclo de vida garantida por IA.',
+    deliverables: [
+      { dot: 'dot-04', title: 'Migração de Workloads (Cloud / Multicloud)', desc: 'Lift and shift inteligente, replatforming e refactoring com suporte a estratégias blue-green e canary.' },
+      { dot: 'dot-04', title: 'Implantação Modular (Front, Back, Data)', desc: 'Deploy incremental por camadas — frontend, backend, dados — reduzindo risco e garantindo rollback seguro.' },
+      { dot: 'dot-04', title: 'Automação do Ciclo de Vida', desc: 'Pipelines de CI/CD, GitOps, automação de testes em produção e gestão de releases por IA.' },
+    ],
+    tools: ['GitLab Duo', 'GitHub Copilot', 'Kubernetes AI', 'Terraform + AI', 'ArgoCD'],
+    artifacts: ['Plano de Migração', 'Runbooks de Deploy', 'Pipelines CI/CD', 'Relatórios de Go-Live'],
+    color: '#fa8c28',
+    bgClass: 'phase-04'
+  },
+  5: {
+    badge: 'detail-05',
+    num: '05',
+    name: 'Value & Optimization',
+    subtitle: 'Monitoramento inteligente, eficiência operacional e CoE de Modernização',
+    description: 'O ciclo não termina na entrega — ele evolui. Aqui garantimos monitoramento contínuo com IA, um plano de sustentação e obsolescência controlada, além da estruturação do Centro de Excelência (CoE) de Modernização para manter a evolução ativa.',
+    deliverables: [
+      { dot: 'dot-05', title: 'Monitoramento de Performance', desc: 'Observabilidade com IA para detecção proativa de anomalias, degradação e oportunidades de otimização.' },
+      { dot: 'dot-05', title: 'Plano Contínuo de Obsolescência (Sustentação)', desc: 'Roadmap vivo de evolução técnica — atualizações, migrações futuras e gestão de dívida técnica residual.' },
+      { dot: 'dot-05', title: 'CoE de Modernização', desc: 'Estrutura organizacional para manter o ritmo de evolução — práticas, ferramentas, capacitação e governança.' },
+    ],
+    tools: ['GitLab Duo', 'GitHub Copilot', 'Datadog AI', 'New Relic AI', 'ENG Ops'],
+    artifacts: ['Dashboard de Observabilidade', 'Relatórios de Eficiência', 'Plano de Sustentação', 'Guia do CoE'],
+    color: '#34d399',
+    bgClass: 'phase-05'
+  }
+};
+ 
+let current = 1;
+ 
+function selectPhase(n) {
+  current = n;
+  // Update tab styling
+  for (let i = 1; i <= 5; i++) {
+    const tab = document.getElementById('phase-tab-' + i);
+    tab.classList.remove('active');
+  }
+  document.getElementById('phase-tab-' + n).classList.add('active');
+  renderDetail(n);
+}
+ 
+function renderDetail(n) {
+  const p = phases[n];
+ 
+  // Left panel
+  const left = document.getElementById('detailLeft');
+  left.innerHTML = `
+    <div class="flex items-center gap-3 mb-5">
+      <span class="detail-badge ${p.badge}">${p.num} / 05</span>
+      <span class="text-xs text-slate-400">${p.subtitle}</span>
+    </div>
+    <h2 class="text-2xl font-semibold text-white">${p.name}</h2>
+    <p class="mt-3 text-sm leading-7 text-slate-300 max-w-2xl">${p.description}</p>
+    <div class="mt-6">
+      <div class="accent-title mb-3">Entregas desta fase</div>
+      <div class="space-y-3">
+        ${p.deliverables.map(d => `
+          <div class="deliverable-item">
+            <span class="dot ${d.dot}"></span>
+            <div>
+              <div class="font-medium text-white text-sm">${d.title}</div>
+              <div class="mt-1 text-xs leading-5 text-slate-400">${d.desc}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+ 
+  // Tools panel
+  const tools = document.getElementById('detailTools');
+  tools.innerHTML = `
+    <div class="accent-title mb-3">LLMs & Ferramentas de IA</div>
+    <div class="flex flex-wrap gap-2">
+      ${p.tools.map(t => `<div class="llm-chip"><span style="color:${p.color}; font-size:10px;">●</span> ${t}</div>`).join('')}
+    </div>
+  `;
+ 
+  // Artifacts panel
+  const arts = document.getElementById('detailArtifacts');
+  arts.innerHTML = `
+    <div class="accent-magenta mb-3">Artefatos gerados</div>
+    <div class="flex flex-wrap gap-2">
+      ${p.artifacts.map(a => `<span class="artifact-tag">${a}</span>`).join('')}
+    </div>
+  `;
+}
+ 
+// Initial render
+renderDetail(1);
+</script>
+ 
+</body>
+</html>
