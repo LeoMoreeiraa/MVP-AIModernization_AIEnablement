@@ -4,10 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AI Modernization & Enablement | O que é a oferta</title>
- 
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-:root { --eng-line: rgba(123,202,255,0.18); --eng-cyan:#3fc7ff; --eng-text:#e8f3ff; --eng-magenta:#e0338a; --eng-magenta-soft:rgba(224,51,138,0.12); }
+:root {
+  --eng-line: rgba(123,202,255,0.18);
+  --eng-cyan: #3fc7ff;
+  --eng-text: #e8f3ff;
+  --eng-magenta: #e0338a;
+  --eng-magenta-soft: rgba(224,51,138,0.12);
+}
+* { box-sizing: border-box; }
 body {
   background:
     radial-gradient(circle at 15% 10%, rgba(63,199,255,0.08), transparent 26%),
@@ -28,305 +34,833 @@ body {
 .panel-item:hover { border-color: rgba(63,199,255,0.35); background: rgba(63,199,255,0.06); }
 .panel-item-magenta { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); transition: all 0.2s ease; }
 .panel-item-magenta:hover { border-color: rgba(224,51,138,0.4); background: rgba(224,51,138,0.06); }
-.pill { border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.04); border-radius: 999px; padding: 6px 12px; font-size: 12px; color: #c8d8e8; }
 .pill-magenta { border: 1px solid rgba(224,51,138,0.3); background: rgba(224,51,138,0.08); border-radius: 999px; padding: 6px 14px; font-size: 12px; color: #f4a0cb; }
-.tag-cyan { background: rgba(63,199,255,0.10); border: 1px solid rgba(63,199,255,0.22); border-radius: 8px; padding: 3px 10px; font-size: 11px; color: #3fc7ff; font-weight: 600; letter-spacing: 0.04em; }
-.tag-magenta { background: rgba(224,51,138,0.10); border: 1px solid rgba(224,51,138,0.25); border-radius: 8px; padding: 3px 10px; font-size: 11px; color: #f4a0cb; font-weight: 600; letter-spacing: 0.04em; }
-.divider { border-top: 1px solid rgba(255,255,255,0.07); }
-.frente-card { border-radius: 24px; padding: 28px; }
-.frente-mod { background: linear-gradient(145deg, rgba(63,199,255,0.10), rgba(79,124,255,0.04)); border: 1px solid rgba(63,199,255,0.2); }
-.frente-ena { background: linear-gradient(145deg, rgba(224,51,138,0.10), rgba(180,30,100,0.04)); border: 1px solid rgba(224,51,138,0.22); }
-.exemplo-dot-cyan::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--eng-cyan); margin-right: 10px; flex-shrink: 0; }
-.exemplo-dot-mag::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--eng-magenta); margin-right: 10px; flex-shrink: 0; }
+.tag-cyan { background: rgba(63,199,255,0.10); border: 1px solid rgba(63,199,255,0.22); border-radius: 8px; padding: 3px 10px; font-size: 11px; color: #3fc7ff; font-weight: 600; }
+.tag-magenta { background: rgba(224,51,138,0.10); border: 1px solid rgba(224,51,138,0.25); border-radius: 8px; padding: 3px 10px; font-size: 11px; color: #f4a0cb; font-weight: 600; }
 .sidebar-section { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(63,199,255,0.5); padding: 8px 16px 4px; }
-.vs-divider { display: flex; align-items: center; gap: 12px; }
-.vs-divider::before, .vs-divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+.frente-mod { background: linear-gradient(145deg, rgba(63,199,255,0.10), rgba(79,124,255,0.04)); border: 1px solid rgba(63,199,255,0.2); border-radius: 24px; }
+
+/* ── Service tabs ── */
+.svc-tab { cursor: pointer; border-radius: 14px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); transition: all 0.2s; }
+.svc-tab:hover { border-color: rgba(63,199,255,0.3); background: rgba(63,199,255,0.06); }
+.svc-tab.active { border-color: rgba(63,199,255,0.5); background: linear-gradient(135deg, rgba(63,199,255,0.14), rgba(79,124,255,0.06)); }
+.svc-tab .tab-num { font-size: 10px; font-weight: 700; color: #3fc7ff; letter-spacing: 0.1em; }
+.svc-tab .tab-name { font-size: 13px; font-weight: 600; color: white; margin-top: 2px; }
+.svc-tab .tab-sub { font-size: 11px; color: #7a9ab8; margin-top: 2px; }
+
+/* ── Pain tags ── */
+.pain-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(224,51,138,0.09); border: 1px solid rgba(224,51,138,0.22); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #f4a0cb; }
+.deliver-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(63,199,255,0.08); border: 1px solid rgba(63,199,255,0.2); border-radius: 999px; padding: 4px 12px; font-size: 11px; color: #3fc7ff; }
+
+/* ── Demo canvas ── */
+.demo-box { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; position: relative; }
+.demo-topbar { background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+.demo-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* code font */
+.code { font-family: 'Courier New', Courier, monospace; font-size: 12px; line-height: 1.7; }
+
+/* ── Refactor animation ── */
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes fadeSlideIn { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: translateY(0); } }
+@keyframes scanLine { 0%{top:0} 100%{top:100%} }
+@keyframes pulse-dot { 0%,100%{opacity:.4} 50%{opacity:1} }
+@keyframes flowRight { 0%{transform:translateX(-100%); opacity:0} 50%{opacity:1} 100%{transform:translateX(200%); opacity:0} }
+@keyframes countUp { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
+@keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+@keyframes rotateCog { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes nodePulse { 0%,100%{box-shadow:0 0 0 0 rgba(63,199,255,0.4)} 50%{box-shadow:0 0 0 8px rgba(63,199,255,0)} }
+@keyframes lineGrow { from{stroke-dashoffset:300} to{stroke-dashoffset:0} }
+
+.scan-anim { position: absolute; left:0; right:0; height: 2px; background: linear-gradient(90deg, transparent, rgba(63,199,255,0.6), transparent); animation: scanLine 2s linear infinite; }
+
+/* progress bar animation */
+.prog-bar { height: 5px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; }
+.prog-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #3fc7ff, #7b59ff); width: 0%; transition: width 0.8s ease; }
+
+/* token flow */
+.token-flow { display: flex; gap: 6px; flex-wrap: wrap; }
+.token { font-size: 11px; padding: 3px 8px; border-radius: 6px; font-family: monospace; animation: fadeSlideIn 0.4s ease both; }
+.tok-old { background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.3); color: #ff9a9a; }
+.tok-new { background: rgba(63,199,255,0.12); border: 1px solid rgba(63,199,255,0.3); color: #3fc7ff; }
+.tok-arrow { color: #4a6a80; font-size: 13px; display: flex; align-items: center; }
+
+/* node diagram */
+.node { border-radius: 12px; padding: 8px 14px; font-size: 11px; font-weight: 600; text-align: center; position: relative; }
+.node-mono { background: rgba(255,80,80,0.12); border: 1px solid rgba(255,80,80,0.3); color: #ff9a9a; }
+.node-micro { background: rgba(63,199,255,0.12); border: 1px solid rgba(63,199,255,0.3); color: #3fc7ff; }
+.node-api { background: rgba(124,99,255,0.12); border: 1px solid rgba(124,99,255,0.3); color: #b09bff; }
+.node-db { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.3); color: #6ee7b7; }
+.conn { stroke: rgba(63,199,255,0.4); stroke-width: 1.5; stroke-dasharray: 300; fill: none; animation: lineGrow 1.5s ease forwards; }
+
+/* doc generation */
+.doc-line { height: 14px; border-radius: 4px; margin-bottom: 8px; background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 100%); background-size: 400px; animation: shimmer 1.8s infinite; }
+
+/* test results */
+.test-row { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-family: monospace; animation: fadeSlideIn 0.5s ease both; }
+.test-pass { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); color: #6ee7b7; }
+.test-fail { background: rgba(255,80,80,0.08); border: 1px solid rgba(255,80,80,0.2); color: #ff9a9a; }
+.test-run { background: rgba(250,188,40,0.08); border: 1px solid rgba(250,188,40,0.2); color: #fbbf78; }
+
+/* version upgrade timeline */
+.ver-node { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ver-badge { border-radius: 10px; padding: 6px 14px; font-size: 12px; font-weight: 700; font-family: monospace; }
+.ver-old { background: rgba(255,80,80,0.12); border: 2px solid rgba(255,80,80,0.3); color: #ff9a9a; }
+.ver-mid { background: rgba(250,188,40,0.10); border: 2px dashed rgba(250,188,40,0.3); color: #fbbf78; }
+.ver-new { background: rgba(52,211,153,0.12); border: 2px solid rgba(52,211,153,0.4); color: #6ee7b7; }
+.ver-arrow { color: rgba(255,255,255,0.2); font-size: 18px; display: flex; align-items: center; }
+
+/* active service panel */
+.svc-panel { display: none; }
+.svc-panel.active { display: block; animation: fadeSlideIn 0.3s ease; }
 </style>
 </head>
 <body class="min-h-screen">
 <div class="flex min-h-screen">
- 
-  <!-- Sidebar -->
-  <aside class="hidden w-80 border-r border-white/10 bg-black/10 px-5 py-6 lg:block flex-shrink-0">
-    <div class="mb-8">
-      <div class="text-xs tracking-[0.25em] text-cyan-300/80 uppercase">ENG Brasil</div>
-      <div class="mt-2 text-2xl font-semibold leading-tight">AI Modernization<br><span style="color:var(--eng-magenta);">&</span> AI Enablement</div>
-      <div class="mt-2 text-sm text-slate-300">Demo · Arquitetura · Guia comercial</div>
+
+<!-- Sidebar -->
+<aside class="hidden w-80 border-r border-white/10 bg-black/10 px-5 py-6 lg:block flex-shrink-0">
+  <div class="mb-8">
+    <div class="text-xs tracking-[0.25em] text-cyan-300/80 uppercase">ENG Brasil</div>
+    <div class="mt-2 text-2xl font-semibold leading-tight">AI Modernization<br><span style="color:var(--eng-magenta);">&</span> AI Enablement</div>
+    <div class="mt-2 text-sm text-slate-300">Demo · Arquitetura · Guia comercial</div>
+  </div>
+  <div class="sidebar-section">Início</div>
+  <nav class="space-y-1 mb-4">
+    <a href="aimod_master_index.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Index master</a>
+  </nav>
+  <div class="sidebar-section">A oferta</div>
+  <nav class="space-y-1 mb-4">
+    <a href="aimod_o_que_e.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm active">O que é a oferta</a>
+    <a href="aimod_dores.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Dores enfrentadas</a>
+    <a href="aimod_esteira.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Esteira de Entrega de Valor</a>
+    <a href="aimod_llms.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">LLMs & AI na entrega</a>
+  </nav>
+  <div class="sidebar-section">Posicionamento</div>
+  <nav class="space-y-1 mb-4">
+    <a href="aimod_arquitetura.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Arquitetura da solução</a>
+    <a href="aimod_guia_comercial.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Guia comercial</a>
+    <a href="aimod_battle_card.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Battle Card</a>
+  </nav>
+  <div class="mt-8 rounded-3xl border border-cyan-400/15 bg-cyan-400/5 p-4 text-sm text-slate-300">
+    <div class="font-medium text-white">Objetivo</div>
+    <p class="mt-2 leading-6">Transformar sistemas legados em ativos digitais modernos, ágeis e escaláveis, aplicando IA como orquestrador, acelerador, revisor e testador em todo o ciclo de modernização.</p>
+  </div>
+</aside>
+
+<!-- Main -->
+<main class="flex-1 px-5 py-5 md:px-8 lg:px-10 min-w-0">
+
+  <!-- Header -->
+  <div class="mb-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 md:flex-row md:items-center md:justify-between">
+    <div>
+      <div class="accent-title">A oferta em profundidade</div>
+      <h1 class="mt-1 text-2xl font-semibold md:text-4xl">AI Modernization</h1>
+      <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-300">5 serviços detalhados — o que é, o que entrega, qual dor cura e uma demo animada de cada processo.</p>
     </div>
- 
-    <div class="sidebar-section">Início</div>
-    <nav class="space-y-1 mb-4">
-      <a href="aimod_master_index.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Index master</a>
-    </nav>
- 
-    <div class="sidebar-section">A oferta</div>
-    <nav class="space-y-1 mb-4">
-      <a href="aimod_o_que_e.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm active">O que é a oferta</a>
-      <a href="aimod_dores.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Dores enfrentadas</a>
-      <a href="aimod_esteira.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Esteira de Entrega de Valor</a>
-      <a href="aimod_llms.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">LLMs & AI na entrega</a>
-    </nav>
- 
-    <div class="sidebar-section">Posicionamento</div>
-    <nav class="space-y-1 mb-4">
-      <a href="aimod_arquitetura.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Arquitetura da solução</a>
-      <a href="aimod_guia_comercial.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Guia comercial</a>
-      <a href="aimod_battle_card.html" class="sidebar-link block rounded-2xl px-4 py-3 text-sm text-slate-300">Battle Card</a>
-    </nav>
- 
-    <div class="mt-8 rounded-3xl border border-cyan-400/15 bg-cyan-400/5 p-4 text-sm text-slate-300">
-      <div class="font-medium text-white">Objetivo</div>
-      <p class="mt-2 leading-6">Transformar sistemas legados em ativos digitais modernos, ágeis e escaláveis, aplicando IA como orquestrador, acelerador, revisor e testador em todo o ciclo de modernização.</p>
+    <div class="pill-magenta flex-shrink-0">5 serviços · Demos interativas</div>
+  </div>
+
+  <!-- Intro box -->
+  <section class="mb-6">
+    <div class="frente-mod p-7">
+      <div class="flex items-start gap-5 flex-col md:flex-row">
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-3"><span class="tag-cyan">Frente 1 de 2</span></div>
+          <h2 class="text-2xl font-semibold">O que é AI Modernization?</h2>
+          <p class="mt-3 text-sm leading-7 text-slate-300 max-w-3xl">É a aplicação de Inteligência Artificial em <span class="text-white font-medium">todo o ciclo de modernização de sistemas legados</span> — desde a análise e refatoração até os testes, documentação e otimização contínua. Em outras palavras: usar IA como <span style="color:var(--eng-cyan)">orquestrador</span>, <span style="color:var(--eng-cyan)">acelerador</span>, <span style="color:var(--eng-cyan)">revisor</span> e <span style="color:var(--eng-cyan)">testador</span> na evolução dos sistemas corporativos.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 flex-shrink-0 w-full md:w-64">
+          <div class="metric-highlight rounded-2xl p-3 text-center"><div class="text-2xl font-bold">5</div><div class="text-xs text-slate-400 mt-1">Serviços</div></div>
+          <div class="metric-magenta rounded-2xl p-3 text-center"><div class="text-2xl font-bold">20+</div><div class="text-xs text-slate-400 mt-1">Dores resolvidas</div></div>
+          <div class="metric-highlight rounded-2xl p-3 text-center"><div class="text-2xl font-bold">4</div><div class="text-xs text-slate-400 mt-1">Papéis da IA</div></div>
+          <div class="metric-magenta rounded-2xl p-3 text-center"><div class="text-2xl font-bold">↓</div><div class="text-xs text-slate-400 mt-1">Tech Débito</div></div>
+        </div>
+      </div>
     </div>
-  </aside>
- 
-  <!-- Main -->
-  <main class="flex-1 px-5 py-5 md:px-8 lg:px-10 min-w-0">
- 
-    <!-- Header -->
-    <div class="mb-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 md:flex-row md:items-center md:justify-between">
-      <div>
-        <div class="accent-title">A oferta</div>
-        <h1 class="mt-1 text-2xl font-semibold md:text-4xl">O que é AI Modernization & AI Enablement</h1>
-        <p class="mt-2 max-w-4xl text-sm leading-6 text-slate-300 md:text-base">Entenda as definições de cada frente, exemplos práticos, as diferenças entre elas e como se complementam para transformar o papel da tecnologia no negócio.</p>
-      </div>
-      <div class="pill-magenta flex-shrink-0">2 frentes da oferta</div>
-    </div>
- 
-    <!-- Metrics -->
-    <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      <div class="metric-highlight rounded-2xl p-4"><div class="text-3xl font-semibold">2</div><div class="mt-1 text-sm text-slate-300">Frentes complementares</div></div>
-      <div class="metric-magenta rounded-2xl p-4"><div class="text-3xl font-semibold">5</div><div class="mt-1 text-sm text-slate-300">Exemplos práticos por frente</div></div>
-      <div class="metric-highlight rounded-2xl p-4"><div class="text-3xl font-semibold">4</div><div class="mt-1 text-sm text-slate-300">Papéis da IA na entrega</div></div>
-      <div class="metric-magenta rounded-2xl p-4"><div class="text-3xl font-semibold">1</div><div class="mt-1 text-sm text-slate-300">Objetivo unificado</div></div>
-    </section>
- 
-    <!-- Definição geral -->
-    <section class="mt-6">
-      <div class="glass-card rounded-[28px] p-7">
-        <div class="accent-title">Definição central</div>
-        <h2 class="mt-2 text-2xl font-semibold">A oferta em uma frase</h2>
-        <p class="mt-4 text-slate-300 text-sm leading-7 max-w-4xl">
-          AI Modernization & AI Enablement é a jornada da ENG para <span class="text-white font-medium">transformar sistemas legados em ativos digitais modernos, ágeis e escaláveis</span>, aplicando Inteligência Artificial como <span style="color:var(--eng-cyan);" class="font-medium">orquestrador</span>, <span style="color:var(--eng-cyan);" class="font-medium">acelerador</span>, <span style="color:var(--eng-cyan);" class="font-medium">revisor</span> e <span style="color:var(--eng-cyan);" class="font-medium">testador</span> em todo o ciclo de modernização — e preparando a organização para operar nesse novo ecossistema digital de forma contínua.
-        </p>
-        <div class="mt-6 grid gap-3 md:grid-cols-4">
-          <div class="panel-item rounded-2xl p-4 text-center">
-            <div class="text-2xl mb-1">🧠</div>
-            <div class="text-sm font-medium text-white">Orquestrador</div>
-            <div class="mt-1 text-xs text-slate-400">Coordena fluxos e decisões do ciclo</div>
-          </div>
-          <div class="panel-item rounded-2xl p-4 text-center">
-            <div class="text-2xl mb-1">⚡</div>
-            <div class="text-sm font-medium text-white">Acelerador</div>
-            <div class="mt-1 text-xs text-slate-400">Reduz tempo de refatoração e entrega</div>
-          </div>
-          <div class="panel-item rounded-2xl p-4 text-center">
-            <div class="text-2xl mb-1">🔍</div>
-            <div class="text-sm font-medium text-white">Revisor</div>
-            <div class="mt-1 text-xs text-slate-400">Analisa código, qualidade e riscos</div>
-          </div>
-          <div class="panel-item rounded-2xl p-4 text-center">
-            <div class="text-2xl mb-1">🧪</div>
-            <div class="text-sm font-medium text-white">Testador</div>
-            <div class="mt-1 text-xs text-slate-400">Gera e valida testes automatizados</div>
-          </div>
+  </section>
+
+  <!-- Service explorer -->
+  <section>
+    <div class="glass-card rounded-[28px] p-7">
+      <div class="accent-title mb-4">Selecione um serviço para explorar</div>
+
+      <!-- Tab row -->
+      <div class="grid gap-3 md:grid-cols-5 mb-8" id="svcTabs">
+        <div class="svc-tab active" onclick="showSvc(0)">
+          <div class="tab-num">01</div>
+          <div class="tab-name">Refatoração</div>
+          <div class="tab-sub">Código legado → moderno</div>
+        </div>
+        <div class="svc-tab" onclick="showSvc(1)">
+          <div class="tab-num">02</div>
+          <div class="tab-name">Decomposição</div>
+          <div class="tab-sub">Monólito → microsserviços</div>
+        </div>
+        <div class="svc-tab" onclick="showSvc(2)">
+          <div class="tab-num">03</div>
+          <div class="tab-name">Atualização</div>
+          <div class="tab-sub">Versões e frameworks</div>
+        </div>
+        <div class="svc-tab" onclick="showSvc(3)">
+          <div class="tab-num">04</div>
+          <div class="tab-name">Documentação</div>
+          <div class="tab-sub">Docs vivas por IA</div>
+        </div>
+        <div class="svc-tab" onclick="showSvc(4)">
+          <div class="tab-num">05</div>
+          <div class="tab-name">Testes IA QA</div>
+          <div class="tab-sub">Testes automatizados</div>
         </div>
       </div>
-    </section>
- 
-    <!-- As duas frentes -->
-    <section class="mt-6 grid gap-6 xl:grid-cols-2">
- 
-      <!-- AI Modernization -->
-      <div class="frente-card frente-mod">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="tag-cyan">Frente 1</span>
-          <span class="text-xs text-slate-400">Aplicação de IA no ciclo de modernização</span>
-        </div>
-        <h2 class="text-2xl font-semibold text-white">AI Modernization</h2>
-        <p class="mt-3 text-sm leading-7 text-slate-300">
-          É a aplicação de Inteligência Artificial em <span class="text-white font-medium">todo o ciclo de modernização de sistemas legados</span> — desde a análise e refatoração até os testes, documentação e otimização contínua. Em outras palavras: é usar IA como orquestrador, acelerador, revisor e testador na <span class="text-white font-medium">evolução dos sistemas corporativos</span>.
-        </p>
- 
-        <div class="divider mt-5 mb-5"></div>
- 
-        <div class="accent-title mb-3">Exemplos práticos</div>
-        <div class="space-y-2 text-sm text-slate-300">
-          <div class="flex items-start gap-2 panel-item rounded-xl px-4 py-3">
-            <span class="exemplo-dot-cyan flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Refatoração</span> automática de código legado para linguagens modernas.</div>
+
+      <!-- ───── SERVICE 01: Refatoração ───── -->
+      <div class="svc-panel active" id="svc-0">
+        <div class="grid gap-6 xl:grid-cols-[1fr_1fr]">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="tag-cyan">Serviço 01</span>
+              <span class="text-xs text-slate-400">Refatoração Automática de Código Legado</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Refatoração assistida por IA</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">Utiliza LLMs especializados em código para analisar sistemas legados — COBOL, PL/SQL, VB6, Java antigo — e <span class="text-white font-medium">converter automaticamente para linguagens e padrões modernos</span>, mantendo a lógica de negócio intacta e com rastreabilidade total.</p>
+
+            <div class="mt-5">
+              <div class="accent-title mb-3">O que entrega</div>
+              <div class="space-y-2">
+                <div class="deliver-tag">Código refatorado e funcional em linguagem-alvo</div>
+                <div class="deliver-tag">Relatório de cobertura e riscos por módulo</div>
+                <div class="deliver-tag">Rastreabilidade entre código legado e novo</div>
+                <div class="deliver-tag">Redução mensurável de dívida técnica</div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <div class="accent-magenta mb-3">Dores que cura</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="pain-tag">⚡ Código herança / dívida técnica acumulada</span>
+                <span class="pain-tag">⚡ Falta de habilidades modernas na equipe</span>
+                <span class="pain-tag">⚡ Custo elevado de manutenção</span>
+                <span class="pain-tag">⚡ Incompatibilidade com arquiteturas modernas</span>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
+              <p class="text-sm text-slate-300 italic leading-6">Com AI Modernization, aceleramos a evolução de sistemas críticos, <span class="text-white not-italic font-medium">reduzindo tempo, custo e risco</span>, garantindo que o legado se torne um ativo digital preparado para o futuro.</p>
+            </div>
           </div>
-          <div class="flex items-start gap-2 panel-item rounded-xl px-4 py-3">
-            <span class="exemplo-dot-cyan flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Conversão</span> de monólitos em microsserviços com apoio de IA.</div>
+
+          <!-- Demo 01: Refactor animation -->
+          <div>
+            <div class="accent-title mb-3">Demo · Processo de refatoração</div>
+            <div class="demo-box">
+              <div class="demo-topbar">
+                <div class="demo-dot" style="background:#ff5f57"></div>
+                <div class="demo-dot" style="background:#febc2e"></div>
+                <div class="demo-dot" style="background:#28c840"></div>
+                <span class="text-xs text-slate-400 ml-2">AI Refactor Engine</span>
+              </div>
+              <div class="p-5" style="min-height:320px;">
+                <!-- Before / After -->
+                <div class="grid gap-3 md:grid-cols-2 mb-4">
+                  <div>
+                    <div class="text-xs text-red-400/80 uppercase tracking-wider mb-2 font-semibold">Antes · COBOL</div>
+                    <div class="code text-red-300/70 bg-black/30 rounded-xl p-3 text-xs" id="codeOld">
+                      IDENTIFICATION DIVISION.<br>
+                      PROGRAM-ID. CALCSAL.<br>
+                      DATA DIVISION.<br>
+                      &nbsp;&nbsp;01 WS-SAL PIC 9(7)V99.<br>
+                      &nbsp;&nbsp;01 WS-TAX PIC 9(5)V99.<br>
+                      PROCEDURE DIVISION.<br>
+                      &nbsp;&nbsp;COMPUTE WS-TAX =<br>
+                      &nbsp;&nbsp;&nbsp;&nbsp;WS-SAL * 0.27<br>
+                      &nbsp;&nbsp;STOP RUN.
+                    </div>
+                  </div>
+                  <div>
+                    <div class="text-xs text-cyan-400/80 uppercase tracking-wider mb-2 font-semibold">Depois · Python</div>
+                    <div class="code text-cyan-300/80 bg-black/30 rounded-xl p-3 text-xs" id="codeNew" style="opacity:0.2; transition: opacity 1s;">
+                      <span class="text-purple-400">def</span> <span class="text-yellow-300">calc_salary_tax</span>(<br>
+                      &nbsp;&nbsp;gross: <span class="text-green-300">float</span><br>
+                      ) -> <span class="text-green-300">float</span>:<br>
+                      &nbsp;&nbsp;<span class="text-slate-400">"""Calculate IR tax."""</span><br>
+                      &nbsp;&nbsp;TAX_RATE = <span class="text-orange-300">0.27</span><br>
+                      &nbsp;&nbsp;<span class="text-purple-400">return</span> gross * TAX_RATE
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Progress pipeline -->
+                <div class="space-y-3" id="refactorSteps">
+                  <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-1">Pipeline de análise</div>
+                  <div class="flex items-center gap-3">
+                    <div class="text-xs text-slate-400 w-32 flex-shrink-0">Análise semântica</div>
+                    <div class="prog-bar flex-1"><div class="prog-fill" id="p1"></div></div>
+                    <div class="text-xs text-cyan-400 w-8" id="pct1">0%</div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="text-xs text-slate-400 w-32 flex-shrink-0">Mapeamento lógico</div>
+                    <div class="prog-bar flex-1"><div class="prog-fill" id="p2"></div></div>
+                    <div class="text-xs text-cyan-400 w-8" id="pct2">0%</div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="text-xs text-slate-400 w-32 flex-shrink-0">Geração de código</div>
+                    <div class="prog-bar flex-1"><div class="prog-fill" id="p3"></div></div>
+                    <div class="text-xs text-cyan-400 w-8" id="pct3">0%</div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="text-xs text-slate-400 w-32 flex-shrink-0">Validação & testes</div>
+                    <div class="prog-bar flex-1"><div class="prog-fill" id="p4"></div></div>
+                    <div class="text-xs text-cyan-400 w-8" id="pct4">0%</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <div id="refactorStatus" class="text-xs text-slate-400">Aguardando...</div>
+                  <button onclick="runRefactor()" class="text-xs px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition-all">▶ Executar demo</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="flex items-start gap-2 panel-item rounded-xl px-4 py-3">
-            <span class="exemplo-dot-cyan flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Atualização</span> de código legado para versões mais recentes de linguagens e frameworks.</div>
-          </div>
-          <div class="flex items-start gap-2 panel-item rounded-xl px-4 py-3">
-            <span class="exemplo-dot-cyan flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Criação</span> de documentação técnica e user stories de forma automatizada.</div>
-          </div>
-          <div class="flex items-start gap-2 panel-item rounded-xl px-4 py-3">
-            <span class="exemplo-dot-cyan flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Realização</span> de testes unitários, regressão e performance gerados e validados por IA.</div>
-          </div>
-        </div>
- 
-        <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
-          <p class="text-sm text-slate-300 italic leading-6">Com AI Modernization, aceleramos a evolução de sistemas críticos, <span class="text-white not-italic font-medium">reduzindo tempo, custo e risco</span>, e garantindo que o legado se torne um ativo digital preparado para o futuro.</p>
         </div>
       </div>
- 
-      <!-- AI Enablement -->
-      <div class="frente-card frente-ena">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="tag-magenta">Frente 2</span>
-          <span class="text-xs text-slate-400">Preparação da organização para o ecossistema digital</span>
-        </div>
-        <h2 class="text-2xl font-semibold text-white">AI Enablement</h2>
-        <p class="mt-3 text-sm leading-7 text-slate-300">
-          É a capacidade de habilitar a empresa para operar em um <span class="text-white font-medium">ecossistema digital moderno</span>, aplicando AI como orquestrador de plataformas, integrações, APIs, infraestrutura e automação que permitem inovação contínua. Em outras palavras: é <span class="text-white font-medium">preparar a organização para usar tecnologia como habilitador do negócio</span>, criando ambientes digitais flexíveis, escaláveis e governados por automações e AI.
-        </p>
- 
-        <div class="divider mt-5 mb-5"></div>
- 
-        <div class="accent-magenta mb-3">Exemplos práticos</div>
-        <div class="space-y-2 text-sm text-slate-300">
-          <div class="flex items-start gap-2 panel-item-magenta rounded-xl px-4 py-3">
-            <span class="exemplo-dot-mag flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Exposição</span> de sistemas legados via APIs para criar novos canais digitais.</div>
+
+      <!-- ───── SERVICE 02: Decomposição monólito ───── -->
+      <div class="svc-panel" id="svc-1">
+        <div class="grid gap-6 xl:grid-cols-[1fr_1fr]">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="tag-cyan">Serviço 02</span>
+              <span class="text-xs text-slate-400">Decomposição de Monólito em Microsserviços</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Monólito → Microsserviços com IA</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">A IA analisa a arquitetura monolítica, identifica domínios de negócio, dependências e acoplamentos ocultos, e <span class="text-white font-medium">propõe e implementa a decomposição em microsserviços desacoplados</span> — com APIs, contratos e fronteiras bem definidas.</p>
+
+            <div class="mt-5">
+              <div class="accent-title mb-3">O que entrega</div>
+              <div class="space-y-2">
+                <div class="deliver-tag">Mapa de domínios e bounded contexts</div>
+                <div class="deliver-tag">Microsserviços com APIs REST/GraphQL definidas</div>
+                <div class="deliver-tag">Contratos de integração (OpenAPI / AsyncAPI)</div>
+                <div class="deliver-tag">Estratégia de strangler fig e migração incremental</div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <div class="accent-magenta mb-3">Dores que cura</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="pain-tag">⚡ Complexidade de arquiteturas monolíticas</span>
+                <span class="pain-tag">⚡ Dependências implícitas e ocultas</span>
+                <span class="pain-tag">⚡ Risco de downtime na modernização</span>
+                <span class="pain-tag">⚡ Dificuldade de adotar CI/CD</span>
+                <span class="pain-tag">⚡ Desafio de transformar lógica em microsserviços</span>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
+              <p class="text-sm text-slate-300 italic leading-6">Times independentes conseguem escalar, evoluir e fazer deploy de cada serviço sem impactar os demais — <span class="text-white not-italic font-medium">agilidade real com governança garantida</span>.</p>
+            </div>
           </div>
-          <div class="flex items-start gap-2 panel-item-magenta rounded-xl px-4 py-3">
-            <span class="exemplo-dot-mag flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Implantação</span> de plataformas cloud-native e multicloud.</div>
+
+          <!-- Demo 02: Node diagram -->
+          <div>
+            <div class="accent-title mb-3">Demo · Decomposição em tempo real</div>
+            <div class="demo-box">
+              <div class="demo-topbar">
+                <div class="demo-dot" style="background:#ff5f57"></div>
+                <div class="demo-dot" style="background:#febc2e"></div>
+                <div class="demo-dot" style="background:#28c840"></div>
+                <span class="text-xs text-slate-400 ml-2">Domain Analyzer</span>
+              </div>
+              <div class="p-5" style="min-height:320px;">
+                <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-4">Antes → Depois da decomposição</div>
+
+                <!-- Before: monolith -->
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="rounded-2xl p-4 text-center flex-shrink-0" style="background:rgba(255,80,80,0.12); border:2px solid rgba(255,80,80,0.3); width:110px;">
+                    <div class="text-2xl mb-1">🧱</div>
+                    <div class="text-xs font-bold text-red-300">MONÓLITO</div>
+                    <div class="text-xs text-red-400/70 mt-1">ERP Core</div>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-xs text-slate-500 mb-2">Módulos acoplados detectados:</div>
+                    <div class="flex flex-wrap gap-2" id="monoModules">
+                      <span class="text-xs px-2 py-1 rounded bg-red-900/30 border border-red-800/40 text-red-300">Pedidos</span>
+                      <span class="text-xs px-2 py-1 rounded bg-red-900/30 border border-red-800/40 text-red-300">Clientes</span>
+                      <span class="text-xs px-2 py-1 rounded bg-red-900/30 border border-red-800/40 text-red-300">Faturamento</span>
+                      <span class="text-xs px-2 py-1 rounded bg-red-900/30 border border-red-800/40 text-red-300">Estoque</span>
+                      <span class="text-xs px-2 py-1 rounded bg-red-900/30 border border-red-800/40 text-red-300">Notificações</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Decomposed result -->
+                <div id="decompResult" style="opacity:0.2; transition: opacity 1s 0.5s;">
+                  <div class="text-xs text-cyan-400/80 uppercase tracking-wider font-semibold mb-3">↓ Após decomposição por IA</div>
+                  <div class="grid grid-cols-3 gap-2">
+                    <div class="node node-micro text-center py-3">🛒<br>Order Svc</div>
+                    <div class="node node-micro text-center py-3">👤<br>Customer Svc</div>
+                    <div class="node node-micro text-center py-3">💰<br>Billing Svc</div>
+                    <div class="node node-micro text-center py-3">📦<br>Inventory Svc</div>
+                    <div class="node node-micro text-center py-3">🔔<br>Notify Svc</div>
+                    <div class="node node-api text-center py-3">🔌<br>API Gateway</div>
+                  </div>
+                  <div class="mt-3 text-xs text-slate-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-400"></span> 5 microsserviços independentes · Deploy isolado · Escalabilidade por domínio
+                  </div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <div id="decompStatus" class="text-xs text-slate-400">Aguardando análise...</div>
+                  <button onclick="runDecomp()" class="text-xs px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition-all">▶ Analisar monólito</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="flex items-start gap-2 panel-item-magenta rounded-xl px-4 py-3">
-            <span class="exemplo-dot-mag flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Automação</span> de processos críticos de DevOps com IA.</div>
-          </div>
-          <div class="flex items-start gap-2 panel-item-magenta rounded-xl px-4 py-3">
-            <span class="exemplo-dot-mag flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Criação</span> de DataOps e AI Ops para dar agilidade e confiabilidade às operações.</div>
-          </div>
-          <div class="flex items-start gap-2 panel-item-magenta rounded-xl px-4 py-3">
-            <span class="exemplo-dot-mag flex items-center mt-0.5"></span>
-            <div><span class="text-white font-medium">Orquestração</span> de integrações e plataformas via AI como camada de habilitação do negócio.</div>
-          </div>
-        </div>
- 
-        <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
-          <p class="text-sm text-slate-300 italic leading-6">Com AI Enablement, damos às empresas as capacidades para inovar, escalar e competir em um mundo digital, <span class="text-white not-italic font-medium">transformando ecossistemas legados em ecossistemas integrados, automatizados e orquestrados por AI</span>, reduzindo barreiras de integração e acelerando o time-to-market.</p>
         </div>
       </div>
- 
-    </section>
- 
-    <!-- Diferenças e complementaridade -->
-    <section class="mt-6 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
- 
-      <div class="glass-card rounded-[28px] p-7">
-        <div class="accent-title">Diferenças e complementaridade</div>
-        <h2 class="mt-2 text-2xl font-semibold">Modernization vs Enablement</h2>
-        <div class="mt-5 overflow-x-auto">
-          <table class="w-full text-sm text-slate-300">
-            <thead>
-              <tr>
-                <th class="text-left py-2 pr-4 text-xs text-slate-500 font-medium uppercase tracking-wider w-36">Dimensão</th>
-                <th class="text-left py-2 pr-4">
-                  <span class="tag-cyan">AI Modernization</span>
-                </th>
-                <th class="text-left py-2">
-                  <span class="tag-magenta">AI Enablement</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-white/5">
-              <tr>
-                <td class="py-3 pr-4 text-xs text-slate-500 font-medium">Foco</td>
-                <td class="py-3 pr-4">O código e os sistemas em si</td>
-                <td class="py-3">A organização e seu ecossistema</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 text-xs text-slate-500 font-medium">Objetivo</td>
-                <td class="py-3 pr-4">Modernizar o que existe</td>
-                <td class="py-3">Habilitar o que vem a seguir</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 text-xs text-slate-500 font-medium">Entrega</td>
-                <td class="py-3 pr-4">Código moderno, testes, docs</td>
-                <td class="py-3">Plataformas, APIs, automações</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 text-xs text-slate-500 font-medium">Perfil</td>
-                <td class="py-3 pr-4">Sistemas legados com dívida técnica</td>
-                <td class="py-3">Empresas em expansão digital</td>
-              </tr>
-              <tr>
-                <td class="py-3 pr-4 text-xs text-slate-500 font-medium">Resultado</td>
-                <td class="py-3 pr-4">Legado vira ativo digital</td>
-                <td class="py-3">Empresa opera em modo digital</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
-          <p class="text-sm text-slate-300 leading-6">As duas frentes são <span class="text-white font-medium">complementares</span>: a Modernization prepara o sistema; o Enablement prepara a organização para operar sobre ele. Na prática, podem ser contratadas juntas ou em sequência.</p>
+
+      <!-- ───── SERVICE 03: Atualização ───── -->
+      <div class="svc-panel" id="svc-2">
+        <div class="grid gap-6 xl:grid-cols-[1fr_1fr]">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="tag-cyan">Serviço 03</span>
+              <span class="text-xs text-slate-400">Atualização de Linguagens e Frameworks</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Upgrade assistido por IA</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">A IA realiza o upgrade de versões de linguagens, frameworks e bibliotecas — migrando código de Java 8 para 21, Spring Boot legado para atual, Angular antigo para moderno — <span class="text-white font-medium">detectando breaking changes, adaptando o código e validando automaticamente</span> cada passo.</p>
+
+            <div class="mt-5">
+              <div class="accent-title mb-3">O que entrega</div>
+              <div class="space-y-2">
+                <div class="deliver-tag">Código migrado para versões LTS mais recentes</div>
+                <div class="deliver-tag">Relatório de breaking changes e adaptações</div>
+                <div class="deliver-tag">Atualização de dependências transitivas</div>
+                <div class="deliver-tag">Testes de regressão pós-upgrade automatizados</div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <div class="accent-magenta mb-3">Dores que cura</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="pain-tag">⚡ Atualizações de bibliotecas obsoletas</span>
+                <span class="pain-tag">⚡ Vulnerabilidades de segurança em versões antigas</span>
+                <span class="pain-tag">⚡ Incompatibilidade com plataformas cloud</span>
+                <span class="pain-tag">⚡ Custos elevados de manutenção de versões EOL</span>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
+              <p class="text-sm text-slate-300 italic leading-6">Versões desatualizadas são um risco de segurança e uma barreira de evolução. <span class="text-white not-italic font-medium">A IA elimina o trabalho manual e o risco de regressão</span> no processo de upgrade.</p>
+            </div>
+          </div>
+
+          <!-- Demo 03: Version timeline -->
+          <div>
+            <div class="accent-title mb-3">Demo · Jornada de upgrade</div>
+            <div class="demo-box">
+              <div class="demo-topbar">
+                <div class="demo-dot" style="background:#ff5f57"></div>
+                <div class="demo-dot" style="background:#febc2e"></div>
+                <div class="demo-dot" style="background:#28c840"></div>
+                <span class="text-xs text-slate-400 ml-2">Version Upgrade Planner</span>
+              </div>
+              <div class="p-5" style="min-height:320px;">
+                <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-5">Java upgrade · 8 → 11 → 21 (LTS)</div>
+
+                <!-- Timeline -->
+                <div class="flex items-center justify-between gap-2 mb-6">
+                  <div class="ver-node">
+                    <div class="ver-badge ver-old">Java 8</div>
+                    <div class="text-xs text-red-400/70 text-center">EOL<br>Vulnerável</div>
+                  </div>
+                  <div class="ver-arrow">→</div>
+                  <div class="ver-node">
+                    <div class="ver-badge ver-mid" id="v11">Java 11</div>
+                    <div class="text-xs text-yellow-400/70 text-center" id="v11sub">Intermediário<br>LTS</div>
+                  </div>
+                  <div class="ver-arrow">→</div>
+                  <div class="ver-node">
+                    <div class="ver-badge ver-new" id="v21" style="opacity:0.3; transition: opacity 0.8s;">Java 21</div>
+                    <div class="text-xs text-green-400/70 text-center" id="v21sub" style="opacity:0.3; transition: opacity 0.8s;">✅ LTS Atual<br>Seguro</div>
+                  </div>
+                </div>
+
+                <!-- Steps list -->
+                <div class="space-y-2" id="upgradeSteps">
+                  <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Passos do upgrade</div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <div id="upgradeStatus" class="text-xs text-slate-400">Aguardando...</div>
+                  <button onclick="runUpgrade()" class="text-xs px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition-all">▶ Iniciar upgrade</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
- 
-      <div class="glass-card rounded-[28px] p-7">
-        <div class="accent-title">Posicionamento</div>
-        <h2 class="mt-2 text-2xl font-semibold">Por que a ENG</h2>
-        <div class="mt-5 space-y-3 text-sm text-slate-300">
-          <div class="panel-item rounded-2xl p-4">
-            <div class="font-medium text-white">API First, AI First, Data Driven</div>
-            <div class="mt-1 text-xs leading-5">Não só como posicionamento — são princípios estruturantes que sustentam cada entrega da jornada.</div>
+
+      <!-- ───── SERVICE 04: Documentação ───── -->
+      <div class="svc-panel" id="svc-3">
+        <div class="grid gap-6 xl:grid-cols-[1fr_1fr]">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="tag-cyan">Serviço 04</span>
+              <span class="text-xs text-slate-400">Documentação Técnica Automatizada por IA</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Documentação viva gerada por IA</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">A IA lê o código-fonte, fluxos, APIs e histórico de commits e <span class="text-white font-medium">gera automaticamente documentação técnica completa</span> — arquitetura, diagramas, user stories, contratos de API e guias de onboarding — mantendo-a sempre atualizada.</p>
+
+            <div class="mt-5">
+              <div class="accent-title mb-3">O que entrega</div>
+              <div class="space-y-2">
+                <div class="deliver-tag">README técnico e guias de arquitetura</div>
+                <div class="deliver-tag">User stories e critérios de aceite gerados do código</div>
+                <div class="deliver-tag">Contratos OpenAPI / Swagger atualizados</div>
+                <div class="deliver-tag">Diagramas de sequência e fluxo de dados</div>
+                <div class="deliver-tag">Documentação sincronizada com o repositório</div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <div class="accent-magenta mb-3">Dores que cura</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="pain-tag">⚡ Falta de documentação / conhecimento institucional</span>
+                <span class="pain-tag">⚡ Perda de especialistas e conhecimento tácito</span>
+                <span class="pain-tag">⚡ Onboarding lento de novos devs</span>
+                <span class="pain-tag">⚡ Documentação desatualizada e não confiável</span>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
+              <p class="text-sm text-slate-300 italic leading-6">Sistemas sem documentação são caixas pretas. <span class="text-white not-italic font-medium">A IA cria e mantém a documentação sincronizada com o código</span>, eliminando o risco de perda de conhecimento.</p>
+            </div>
           </div>
-          <div class="panel-item rounded-2xl p-4">
-            <div class="font-medium text-white">Método + Framework + Resultado</div>
-            <div class="mt-1 text-xs leading-5">Mais do que tecnologia, entregamos métodos e frameworks com resultados consistentes e mensuráveis.</div>
-          </div>
-          <div class="panel-item rounded-2xl p-4">
-            <div class="font-medium text-white">Esteira de 5 fases</div>
-            <div class="mt-1 text-xs leading-5">Discovery, Architecture, AI Development, Migration e Value & Optimization — com artefatos concretos em cada fase.</div>
-          </div>
-          <div class="panel-item rounded-2xl p-4">
-            <div class="font-medium text-white">Governança e rastreabilidade</div>
-            <div class="mt-1 text-xs leading-5">Cada entrega é planejada para maximizar impacto no negócio com governança técnica e visibilidade de progresso.</div>
+
+          <!-- Demo 04: Doc generation shimmer -->
+          <div>
+            <div class="accent-title mb-3">Demo · Geração de documentação</div>
+            <div class="demo-box">
+              <div class="demo-topbar">
+                <div class="demo-dot" style="background:#ff5f57"></div>
+                <div class="demo-dot" style="background:#febc2e"></div>
+                <div class="demo-dot" style="background:#28c840"></div>
+                <span class="text-xs text-slate-400 ml-2">DocGen AI · calc_salary_tax.py</span>
+              </div>
+              <div class="p-5" style="min-height:320px;">
+                <div id="docOutput" style="opacity:0.2; transition: opacity 0.8s;">
+                  <div class="text-xs text-green-400/80 uppercase tracking-wider font-semibold mb-3">📄 Documentação gerada</div>
+                  <div class="code text-slate-300 bg-black/30 rounded-xl p-4 text-xs space-y-1">
+                    <div><span class="text-cyan-400"># calc_salary_tax</span></div>
+                    <div class="text-slate-400">Calcula imposto de renda sobre salário bruto.</div>
+                    <div class="mt-2"><span class="text-yellow-300">## Parâmetros</span></div>
+                    <div><span class="text-green-300">- gross</span> <span class="text-slate-500">float</span> — Valor bruto do salário</div>
+                    <div class="mt-2"><span class="text-yellow-300">## Retorno</span></div>
+                    <div><span class="text-green-300">float</span> — Valor do imposto (alíquota 27%)</div>
+                    <div class="mt-2"><span class="text-yellow-300">## Exemplo</span></div>
+                    <div><span class="text-purple-400">>>> </span>calc_salary_tax(<span class="text-orange-300">10000.0</span>)</div>
+                    <div><span class="text-orange-300">2700.0</span></div>
+                    <div class="mt-2"><span class="text-yellow-300">## User Story</span></div>
+                    <div class="text-slate-400">Como sistema de folha, quero calcular</div>
+                    <div class="text-slate-400">o IR retido na fonte automaticamente.</div>
+                  </div>
+
+                  <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+                    <div class="rounded-xl p-2 bg-white/5 border border-white/10">
+                      <div class="text-xs text-cyan-400 font-bold">3</div>
+                      <div class="text-xs text-slate-500">seções geradas</div>
+                    </div>
+                    <div class="rounded-xl p-2 bg-white/5 border border-white/10">
+                      <div class="text-xs text-cyan-400 font-bold">1</div>
+                      <div class="text-xs text-slate-500">user story</div>
+                    </div>
+                    <div class="rounded-xl p-2 bg-white/5 border border-white/10">
+                      <div class="text-xs text-cyan-400 font-bold">100%</div>
+                      <div class="text-xs text-slate-500">cobertura</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="docPlaceholder">
+                  <div class="space-y-3">
+                    <div class="doc-line w-1/3"></div>
+                    <div class="doc-line w-full"></div>
+                    <div class="doc-line w-4/5"></div>
+                    <div class="doc-line w-2/3"></div>
+                    <div class="doc-line w-1/2"></div>
+                    <div class="doc-line w-full"></div>
+                    <div class="doc-line w-3/4"></div>
+                  </div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <div id="docStatus" class="text-xs text-slate-400">Aguardando análise do código...</div>
+                  <button onclick="runDoc()" class="text-xs px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition-all">▶ Gerar documentação</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <a href="aimod_esteira.html" class="mt-4 block text-center rounded-2xl py-3 text-sm font-medium text-white border border-cyan-400/25 bg-cyan-400/8 hover:bg-cyan-400/15 transition-all">
-          Ver Esteira de Entrega de Valor →
+      </div>
+
+      <!-- ───── SERVICE 05: Testes IA QA ───── -->
+      <div class="svc-panel" id="svc-4">
+        <div class="grid gap-6 xl:grid-cols-[1fr_1fr]">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="tag-cyan">Serviço 05</span>
+              <span class="text-xs text-slate-400">Testes Automatizados com IA QA</span>
+            </div>
+            <h3 class="text-xl font-semibold text-white">IA como testador inteligente</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-300">A IA analisa o código modernizado, infere os comportamentos esperados e <span class="text-white font-medium">gera automaticamente suítes de testes unitários, de integração, regressão e performance</span> — reduzindo o tempo de QA e garantindo cobertura total antes do go-live.</p>
+
+            <div class="mt-5">
+              <div class="accent-title mb-3">O que entrega</div>
+              <div class="space-y-2">
+                <div class="deliver-tag">Suíte de testes unitários gerada por IA</div>
+                <div class="deliver-tag">Testes de integração entre microsserviços</div>
+                <div class="deliver-tag">Cenários de regressão com casos de borda</div>
+                <div class="deliver-tag">Testes de performance e carga automatizados</div>
+                <div class="deliver-tag">Relatório de cobertura e qualidade de código</div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <div class="accent-magenta mb-3">Dores que cura</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="pain-tag">⚡ Risco de downtime na modernização</span>
+                <span class="pain-tag">⚡ Ausência de testes no sistema legado</span>
+                <span class="pain-tag">⚡ Orçamentos de QA imprevisíveis</span>
+                <span class="pain-tag">⚡ Dificuldade de adotar CI/CD com confiança</span>
+                <span class="pain-tag">⚡ Regressões silenciosas após mudanças</span>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
+              <p class="text-sm text-slate-300 italic leading-6">Testes gerados por IA com <span class="text-white not-italic font-medium">cobertura de 80%+ desde o primeiro deploy</span> — o que manualmente levaria semanas é entregue em horas.</p>
+            </div>
+          </div>
+
+          <!-- Demo 05: Test runner -->
+          <div>
+            <div class="accent-title mb-3">Demo · Execução de suíte de testes</div>
+            <div class="demo-box">
+              <div class="demo-topbar">
+                <div class="demo-dot" style="background:#ff5f57"></div>
+                <div class="demo-dot" style="background:#febc2e"></div>
+                <div class="demo-dot" style="background:#28c840"></div>
+                <span class="text-xs text-slate-400 ml-2">AI QA Runner · test_calc_salary.py</span>
+              </div>
+              <div class="p-5" style="min-height:320px;">
+                <div id="testSuite" class="space-y-2">
+                  <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-3">Aguardando execução...</div>
+                </div>
+
+                <div id="testSummary" class="mt-4 grid grid-cols-3 gap-2 text-center" style="opacity:0; transition: opacity 0.8s;">
+                  <div class="rounded-xl p-2 bg-green-900/20 border border-green-800/30">
+                    <div class="text-sm text-green-400 font-bold" id="passCount">0</div>
+                    <div class="text-xs text-slate-500">Passed</div>
+                  </div>
+                  <div class="rounded-xl p-2 bg-red-900/20 border border-red-800/30">
+                    <div class="text-sm text-red-400 font-bold" id="failCount">0</div>
+                    <div class="text-xs text-slate-500">Failed</div>
+                  </div>
+                  <div class="rounded-xl p-2 bg-cyan-900/20 border border-cyan-800/30">
+                    <div class="text-sm text-cyan-400 font-bold" id="covCount">0%</div>
+                    <div class="text-xs text-slate-500">Coverage</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <div id="testStatus" class="text-xs text-slate-400">Suíte de 7 testes pronta para executar</div>
+                  <button onclick="runTests()" class="text-xs px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition-all">▶ Executar testes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end glass-card -->
+  </section>
+
+  <!-- Bottom nav -->
+  <section class="mt-6">
+    <div class="glass-card rounded-[28px] p-6">
+      <div class="accent-title mb-4">Continuar explorando</div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <a href="aimod_dores.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+          <div class="text-base font-medium text-white">Dores enfrentadas</div>
+          <div class="mt-2 text-xs leading-5 text-slate-300">Mapa completo das 20+ dores que esses serviços resolvem.</div>
+        </a>
+        <a href="aimod_esteira.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+          <div class="text-base font-medium text-white">Esteira de Entrega de Valor</div>
+          <div class="mt-2 text-xs leading-5 text-slate-300">Como esses serviços se encaixam nas 5 fases do ciclo.</div>
+        </a>
+        <a href="aimod_guia_comercial.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
+          <div class="text-base font-medium text-white">Guia comercial</div>
+          <div class="mt-2 text-xs leading-5 text-slate-300">Pitch, objeções e qualificação para vender a oferta.</div>
         </a>
       </div>
- 
-    </section>
- 
-    <!-- Próximos passos -->
-    <section class="mt-6">
-      <div class="glass-card rounded-[28px] p-7">
-        <div class="accent-title">Navegação sugerida</div>
-        <h2 class="mt-2 text-xl font-semibold">O que explorar agora</h2>
-        <div class="mt-5 grid gap-4 md:grid-cols-3">
-          <a href="aimod_dores.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
-            <div class="text-base font-medium text-white">Dores enfrentadas</div>
-            <div class="mt-2 text-xs leading-5 text-slate-300">Veja o mapa completo das dores de clientes com sistemas legados que abrem espaço para a oferta.</div>
-          </a>
-          <a href="aimod_esteira.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
-            <div class="text-base font-medium text-white">Esteira de Entrega de Valor</div>
-            <div class="mt-2 text-xs leading-5 text-slate-300">Entenda as 5 fases do ciclo — Discovery, Architecture, AI Development, Migration e Value & Optimization.</div>
-          </a>
-          <a href="aimod_guia_comercial.html" class="panel-item panel-item-magenta rounded-2xl p-5 block">
-            <div class="text-base font-medium text-white">Guia comercial</div>
-            <div class="mt-2 text-xs leading-5 text-slate-300">Posicionamento, pitch, objeções e perguntas de qualificação para apoiar a venda da oferta.</div>
-          </a>
-        </div>
-      </div>
-    </section>
- 
-  </main>
+    </div>
+  </section>
+
+</main>
 </div>
+
+<script>
+// ── Tab switcher ──
+function showSvc(idx) {
+  document.querySelectorAll('.svc-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.svc-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+}
+
+// ── Demo 01: Refactor ──
+function animateProg(id, pctId, target, delay) {
+  setTimeout(() => {
+    let v = 0;
+    const el = document.getElementById(id);
+    const pt = document.getElementById(pctId);
+    const iv = setInterval(() => {
+      v = Math.min(v + 2, target);
+      el.style.width = v + '%';
+      pt.textContent = v + '%';
+      if (v >= target) clearInterval(iv);
+    }, 20);
+  }, delay);
+}
+
+function runRefactor() {
+  document.getElementById('refactorStatus').textContent = '🔍 Analisando código COBOL...';
+  ['p1','p2','p3','p4'].forEach(id => { document.getElementById(id).style.width='0%'; });
+  ['pct1','pct2','pct3','pct4'].forEach(id => { document.getElementById(id).textContent='0%'; });
+  document.getElementById('codeNew').style.opacity = '0.2';
+
+  animateProg('p1','pct1',100, 300);
+  setTimeout(() => { document.getElementById('refactorStatus').textContent = '🗺️ Mapeando lógica de negócio...'; }, 1400);
+  animateProg('p2','pct2',100, 1500);
+  setTimeout(() => { document.getElementById('refactorStatus').textContent = '⚡ Gerando código Python...'; }, 2700);
+  animateProg('p3','pct3',100, 2800);
+  setTimeout(() => {
+    document.getElementById('codeNew').style.opacity = '1';
+    document.getElementById('refactorStatus').textContent = '🧪 Validando resultado...';
+  }, 4000);
+  animateProg('p4','pct4',100, 4100);
+  setTimeout(() => { document.getElementById('refactorStatus').textContent = '✅ Refatoração concluída com sucesso!'; }, 5600);
+}
+
+// ── Demo 02: Decomp ──
+function runDecomp() {
+  const status = document.getElementById('decompStatus');
+  const result = document.getElementById('decompResult');
+  status.textContent = '🔍 Analisando acoplamentos...';
+  result.style.opacity = '0.2';
+  setTimeout(() => { status.textContent = '🗂️ Identificando domínios de negócio...'; }, 1000);
+  setTimeout(() => { status.textContent = '✂️ Propondo fronteiras de microsserviços...'; }, 2200);
+  setTimeout(() => { result.style.opacity = '1'; status.textContent = '✅ Decomposição concluída — 5 microsserviços identificados!'; }, 3200);
+}
+
+// ── Demo 03: Upgrade ──
+const upgradeStepsList = [
+  { text: '🔍 Analisando dependências do Java 8...', type: 'run' },
+  { text: '⚠️ 14 breaking changes detectados (Java 11)', type: 'run' },
+  { text: '🔧 Adaptando API de Date/Time legada...', type: 'run' },
+  { text: '✅ Migração Java 8 → 11 concluída', type: 'pass' },
+  { text: '🔍 Analisando breaking changes Java 17/21...', type: 'run' },
+  { text: '🔧 Records e Sealed Classes aplicados...', type: 'run' },
+  { text: '✅ Migração Java 11 → 21 (LTS) concluída', type: 'pass' },
+];
+
+function runUpgrade() {
+  const container = document.getElementById('upgradeSteps');
+  const status = document.getElementById('upgradeStatus');
+  const v21 = document.getElementById('v21');
+  const v21sub = document.getElementById('v21sub');
+  container.innerHTML = '<div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-2">Passos do upgrade</div>';
+  v21.style.opacity = '0.3';
+  v21sub.style.opacity = '0.3';
+
+  upgradeStepsList.forEach((step, i) => {
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'test-row ' + (step.type === 'pass' ? 'test-pass' : 'test-run');
+      div.style.animationDelay = '0s';
+      div.innerHTML = step.text;
+      container.appendChild(div);
+      status.textContent = step.text.replace(/^[^\s]+\s/,'');
+      if (i === upgradeStepsList.length - 1) {
+        v21.style.opacity = '1';
+        v21sub.style.opacity = '1';
+        status.textContent = '✅ Java 21 LTS — atualização completa!';
+      }
+    }, i * 700);
+  });
+}
+
+// ── Demo 04: Doc ──
+function runDoc() {
+  const out = document.getElementById('docOutput');
+  const placeholder = document.getElementById('docPlaceholder');
+  const status = document.getElementById('docStatus');
+  out.style.opacity = '0.2';
+  placeholder.style.display = 'block';
+  status.textContent = '🔍 Lendo código-fonte...';
+  setTimeout(() => { status.textContent = '📐 Inferindo parâmetros e retorno...'; }, 900);
+  setTimeout(() => { status.textContent = '✍️ Gerando documentação e user story...'; }, 1800);
+  setTimeout(() => {
+    placeholder.style.display = 'none';
+    out.style.opacity = '1';
+    status.textContent = '✅ Documentação gerada e sincronizada com o repositório!';
+  }, 2800);
+}
+
+// ── Demo 05: Tests ──
+const testCases = [
+  { name: 'test_calc_positive_salary', result: 'pass', time: '0.003s' },
+  { name: 'test_calc_zero_salary', result: 'pass', time: '0.001s' },
+  { name: 'test_calc_large_salary', result: 'pass', time: '0.002s' },
+  { name: 'test_calc_negative_salary', result: 'fail', time: '0.001s' },
+  { name: 'test_calc_type_validation', result: 'pass', time: '0.004s' },
+  { name: 'test_calc_rate_accuracy', result: 'pass', time: '0.002s' },
+  { name: 'test_calc_boundary_values', result: 'pass', time: '0.003s' },
+];
+
+function runTests() {
+  const suite = document.getElementById('testSuite');
+  const summary = document.getElementById('testSummary');
+  const status = document.getElementById('testStatus');
+  suite.innerHTML = '<div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-3">Executando testes...</div>';
+  summary.style.opacity = '0';
+  document.getElementById('passCount').textContent = '0';
+  document.getElementById('failCount').textContent = '0';
+  document.getElementById('covCount').textContent = '0%';
+
+  let passes = 0, fails = 0;
+  testCases.forEach((tc, i) => {
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'test-row ' + (tc.result === 'pass' ? 'test-pass' : 'test-fail');
+      div.style.animationDelay = '0s';
+      const icon = tc.result === 'pass' ? '✓' : '✗';
+      div.innerHTML = `<span>${icon}</span><span class="flex-1">${tc.name}</span><span class="text-slate-500">${tc.time}</span>`;
+      suite.appendChild(div);
+      if (tc.result === 'pass') passes++; else fails++;
+      status.textContent = `Executando ${i+1}/${testCases.length}...`;
+
+      if (i === testCases.length - 1) {
+        summary.style.opacity = '1';
+        document.getElementById('passCount').textContent = passes;
+        document.getElementById('failCount').textContent = fails;
+        setTimeout(() => {
+          document.getElementById('covCount').textContent = '83%';
+          status.textContent = `✅ ${passes} passed, ${fails} failed — cobertura 83%`;
+        }, 400);
+      }
+    }, i * 500);
+  });
+}
+</script>
 </body>
 </html>
